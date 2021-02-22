@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import org.jianzhao.hydrogen.support.JavaScriptBridge;
 
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         WebView webView = this.findViewById(R.id.mainWebView);
+        // WebView client
+        webView.setWebViewClient(new WebViewClient());
         // settings
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
