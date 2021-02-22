@@ -1,1 +1,11 @@
 .idea/
+node_modules/
+.gradle/
+build/
+captures/
+
+.DS_Store
+*.iml
+.externalNativeBuild
+.cxx
+local.properties
