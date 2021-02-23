@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     private String handleOnWebViewMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         if ("hydrogen".equals(message)) {
-            this.getWebView().loadUrl(NATRIUM);
+            WebView webView = this.getWebView();
+            webView.post(() -> webView.loadUrl(NATRIUM));
         }
         return "OK";
     }
