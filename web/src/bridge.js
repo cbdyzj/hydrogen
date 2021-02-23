@@ -6,7 +6,7 @@ export function setListener(listener) {
 
 export function postMessage(message) {
     if (typeof window?.android?.onWebViewMessage === 'function') {
-        return window.native.onWebViewMessage(message)
+        return window.android.onWebViewMessage(message)
     }
 }
 
