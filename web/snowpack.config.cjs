@@ -13,7 +13,7 @@ module.exports = {
         'snowpack-plugin-less',
     ],
     alias: {
-        '@': './static',
+        '@': './src',
     },
     routes: [
         { src: '/api/.*', dest: proxyTo('http://localhost:8080'), },
