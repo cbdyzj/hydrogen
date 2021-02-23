@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import org.jianzhao.hydrogen.support.JavaScriptBridge;
 
@@ -15,6 +16,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private static final String DEUTERIUM = "https://deuterium.vercel.app/";
+    private static final String NATRIUM = "https://natrium.herokuapp.com/";
 
     private WebView webView;
 
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String handleOnWebViewMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        if ("hydrogen".equals(message)) {
+            this.getWebView().loadUrl(NATRIUM);
+        }
         return "OK";
     }
 

@@ -2,8 +2,9 @@
 node_modules/
 .gradle/
 build/
+dist/
 captures/
-
+yarn.lock
 .DS_Store
 *.iml
 .externalNativeBuild

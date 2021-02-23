@@ -4,17 +4,31 @@
   "description": "hydrogen",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "snowpack dev --config ./snowpack.config.cjs",
+    "build": "snowpack build --config ./snowpack.config.cjs",
+    "clean": "del dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cbdyzj/hydrogen.git"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cbdyzj/hydrogen/issues"
+  },
+  "devDependencies": {
+    "snowpack": "^3.0.11",
+    "del-cli": "^3.0.1",
+    "http-proxy": "^1.18.1",
+    "snowpack-plugin-less": "^1.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
   },
   "homepage": "https://github.com/cbdyzj/hydrogen#readme"
 }
