@@ -16,7 +16,6 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private static final String DEUTERIUM = "https://deuterium.vercel.app/";
-    private static final String NATRIUM = "https://natrium.herokuapp.com/";
 
     private WebView webView;
 
@@ -46,11 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String handleOnWebViewMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-        if ("hydrogen".equals(message)) {
-            WebView webView = this.getWebView();
-            webView.post(() -> webView.loadUrl(NATRIUM));
-        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         return "OK";
     }
 
