@@ -1,13 +1,15 @@
 package org.jianzhao.hydrogen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.jianzhao.hydrogen.support.JavaScriptBridge;
 
@@ -22,9 +24,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_main);
+        // layout
+        @SuppressLint("InflateParams")
+        View layout = this.getLayoutInflater().inflate(R.layout.activity_main, null);
+        layout.setPadding(0, this.getStatusBarHeight(), 0, 0);
+        this.setContentView(layout);
+        // webView
         this.initWebView();
         this.getWebView().loadUrl(DEUTERIUM);
+    }
+
+    public int getStatusBarHeight() {
+        int height = 0;
+        Resources resources = this.getApplicationContext().getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            height = resources.getDimensionPixelSize(resourceId);
+        }
+        return height;
     }
 
     @SuppressLint("SetJavaScriptEnabled")
