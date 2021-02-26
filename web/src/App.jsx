@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { HashRouter as Router, Route, Switch, useLocation } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, useLocation, useHistory } from 'react-router-dom'
 import { postMessage, setListener } from './bridge'
 
 const ColorList = lazy(() => import('./pages/ColorList/ColorList'))
@@ -10,9 +10,20 @@ setListener((message) => {
 })
 
 function Hydrogen(props) {
+
+    const history = useHistory()
+
+    function handleClick(ev) {
+        if (typeof props.onClick === 'function') {
+            props.onClick(ev)
+            return
+        }
+        history.push('/colors')
+    }
+
     return (
         <div id="hydrogen">
-            <img src="./hydrogen.svg" alt="hydrogen" />
+            <img onClick={handleClick} src="./hydrogen.svg" alt="hydrogen" />
             <div className="text-center text-black">
                 {props.children}
             </div>
@@ -22,8 +33,12 @@ function Hydrogen(props) {
 
 function NoMatch(props) {
     const location = useLocation()
+
+    function handleClick(ev) {
+    }
+
     return (
-        <Hydrogen>
+        <Hydrogen onClick={handleClick}>
             No match for <code>{location.pathname}</code>
         </Hydrogen>
     )
