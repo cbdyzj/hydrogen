@@ -1,7 +1,6 @@
 package org.jianzhao.hydrogen;
 
 import android.annotation.SuppressLint;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -12,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.jianzhao.hydrogen.support.JavaScriptBridge;
+import org.jianzhao.hydrogen.support.SystemWindowUtils;
 
 import java.util.Objects;
 
@@ -27,21 +27,12 @@ public class MainActivity extends AppCompatActivity {
         // layout
         @SuppressLint("InflateParams")
         View layout = this.getLayoutInflater().inflate(R.layout.activity_main, null);
-        layout.setPadding(0, this.getStatusBarHeight(), 0, 0);
+        int statusBarHeight = SystemWindowUtils.getStatusBarHeight(this);
+        layout.setPadding(0, statusBarHeight, 0, 0);
         this.setContentView(layout);
         // webView
         this.initWebView();
         this.getWebView().loadUrl(DEUTERIUM);
-    }
-
-    public int getStatusBarHeight() {
-        int height = 0;
-        Resources resources = this.getApplicationContext().getResources();
-        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            height = resources.getDimensionPixelSize(resourceId);
-        }
-        return height;
     }
 
     @SuppressLint("SetJavaScriptEnabled")
