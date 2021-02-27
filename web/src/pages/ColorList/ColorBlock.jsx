@@ -18,7 +18,7 @@ export default function ColorBlock(props) {
 
     return (
         <div className={`flex justify-around items-center ${getTextColor()}`}
-             style={{ height: '2rem', backgroundColor: props.color,padding:'0 24%' }}>
+             style={{ height: '2rem', backgroundColor: props.color, padding: '0 24%' }}>
             <span className="capitalize text-shadow">{props.name}</span>
             <span className="uppercase text-shadow">{props.color}</span>
         </div>
