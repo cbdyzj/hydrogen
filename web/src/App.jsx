@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { HashRouter as Router, Route, Switch, useLocation, useHistory } from 'react-router-dom'
 import { setListener } from './bridge'
 import { noop } from './utils/functions'
+import hydrogen from './hydrogen.svg'
 
 const ColorList = lazy(() => import('./pages/ColorList/ColorList'))
 
@@ -24,7 +25,7 @@ function Hydrogen(props) {
 
     return (
         <div id="hydrogen">
-            <img onClick={handleClick} src="./hydrogen.svg" alt="hydrogen" />
+            <img onClick={handleClick} src={hydrogen} alt="hydrogen" />
             <div className="text-center text-black">
                 {props.children}
             </div>
