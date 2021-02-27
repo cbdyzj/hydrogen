@@ -28,8 +28,17 @@ export default function ColorList(props) {
     const colorBlocks = getColorList()
         .map(it => (<ColorBlock key={it.name} {...it} />))
 
+    function handleDoubleClick(ev) {
+        const box = document.documentElement
+        if (box.scrollTop) {
+            box.scrollTo({ top: 0, behavior: 'smooth' })
+        } else {
+            box.scrollTo({ top: box.scrollHeight, behavior: 'smooth' })
+        }
+    }
+
     return (
-        <div>
+        <div onDoubleClick={handleDoubleClick}>
             {colorBlocks}
         </div>
     )

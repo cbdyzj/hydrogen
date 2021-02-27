@@ -1,35 +1,19 @@
 import React, { lazy, Suspense } from 'react'
 import { HashRouter as Router, Route, Switch, useLocation, useHistory } from 'react-router-dom'
-import { setListener } from './bridge'
-import { noop } from './utils/functions'
-import hydrogen from './hydrogen.svg'
+import Hydrogen from './components/Hydrogen'
 
-const ColorList = lazy(() => import('./pages/ColorList/ColorList'))
-
-setListener((message) => {
-    console.log('receive message: ' + message)
-    return 'OK'
-})
-
-function Hydrogen(props) {
+function Launcher(props) {
 
     const history = useHistory()
 
     function handleClick(ev) {
-        if (typeof props.onClick === 'function') {
-            props.onClick(ev)
-            return
-        }
         history.push('/colors')
     }
 
     return (
-        <div id="hydrogen">
-            <img onClick={handleClick} src={hydrogen} alt="hydrogen" />
-            <div className="text-center text-black">
-                {props.children}
-            </div>
-        </div>
+        <Hydrogen onClick={handleClick}>
+            Hydrogen
+        </Hydrogen>
     )
 }
 
@@ -37,19 +21,23 @@ function NoMatch(props) {
     const location = useLocation()
 
     return (
-        <Hydrogen onClick={noop}>
+        <Hydrogen>
             No match for <code>{location.pathname}</code>
         </Hydrogen>
     )
 }
+
+const ColorList = lazy(() => import('./pages/ColorList/ColorList'))
+const Timer = lazy(() => import('./pages/Timer/Timer'))
 
 export default function App() {
     return (
         <Router>
             <Suspense fallback={<Hydrogen>Loading...</Hydrogen>}>
                 <Switch>
-                    <Route path="/" exact><Hydrogen>Hydrogen</Hydrogen></Route>
+                    <Route path="/" exact><Launcher /></Route>
                     <Route path="/colors"><ColorList /></Route>
+                    <Route path="/timer"><Timer /></Route>
                     <Route path="*"><NoMatch /></Route>
                 </Switch>
             </Suspense>
