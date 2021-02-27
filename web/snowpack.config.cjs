@@ -11,6 +11,7 @@ module.exports = {
     },
     plugins: [
         'snowpack-plugin-less',
+        'snowpack-plugin-hash',
     ],
     alias: {
         '@': './src',
@@ -25,7 +26,6 @@ module.exports = {
         open: 'none',
     },
     buildOptions: {
-        metaUrlPath: 'snowpack',
         out: './dist',
     },
 }

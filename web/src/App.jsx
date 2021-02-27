@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import { HashRouter as Router, Route, Switch, useLocation, useHistory } from 'react-router-dom'
-import { postMessage, setListener } from './bridge'
+import { setListener } from './bridge'
+import { noop } from './utils/functions'
 
 const ColorList = lazy(() => import('./pages/ColorList/ColorList'))
 
@@ -34,11 +35,8 @@ function Hydrogen(props) {
 function NoMatch(props) {
     const location = useLocation()
 
-    function handleClick(ev) {
-    }
-
     return (
-        <Hydrogen onClick={handleClick}>
+        <Hydrogen onClick={noop}>
             No match for <code>{location.pathname}</code>
         </Hydrogen>
     )
