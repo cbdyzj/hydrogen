@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String DEUTERIUM = "https://deuterium.vercel.app/";
+    private static final String HYDROGEN = "https://hydrogen-cbdyzj.vercel.app/";
 
     private WebView webView;
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         this.setContentView(layout);
         // webView
         this.initWebView();
-        this.getWebView().loadUrl(DEUTERIUM);
+        this.getWebView().loadUrl(HYDROGEN);
     }
 
     @SuppressLint("SetJavaScriptEnabled")

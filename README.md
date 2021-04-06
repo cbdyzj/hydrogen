@@ -1,3 +1,3 @@
 # hydrogen
 
-- https://deuterium.vercel.app/
+- https://hydrogen-cbdyzj.vercel.app/
