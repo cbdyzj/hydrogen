@@ -10,7 +10,6 @@ module.exports = {
         './src': '/',
     },
     plugins: [
-        'snowpack-plugin-less',
         'snowpack-plugin-hash',
     ],
     alias: {

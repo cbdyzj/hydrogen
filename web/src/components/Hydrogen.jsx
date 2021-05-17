@@ -10,11 +10,11 @@ export default function Hydrogen(props) {
     }
 
     return (
-        <div id="hydrogen">
+        <div className="text-center">
             <img onClick={handleClick} src={hydrogen} alt="hydrogen" />
-            <div className="text-center text-black">
+            {props.children && <div className="text-center text-black">
                 {props.children}
-            </div>
+            </div>}
         </div>
     )
 }

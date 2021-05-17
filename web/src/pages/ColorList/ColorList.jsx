@@ -1,6 +1,6 @@
 import React from 'react'
-import ColorBlock from './ColorBlock'
-import colors from './colors'
+import ColorBlock from './ColorBlock.jsx'
+import colors from './colors.js'
 
 function getColorList() {
     return Object.entries(colors)
