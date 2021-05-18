@@ -3,17 +3,43 @@
 import React, { lazy, Suspense } from 'react'
 import { HashRouter as Router, Route, Switch, useLocation, Link } from 'react-router-dom'
 import Hydrogen from './components/Hydrogen.jsx'
+import styled from 'styled-components'
+
+const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: .75rem;
+`
+
+const NavButton = styled.button`
+  color: #000;
+  border: solid 2px #000;
+  border-radius: 2px;
+  background-color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  min-height: 2.5rem;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.1) 0 1px 3px 0, rgba(0, 0, 0, 0.06) 0 1px 2px 0;
+`
 
 function Launcher(props) {
 
     return (
         <Hydrogen>
-            <nav className="flex flex-col">
-                <Link className="no-underline text-black text-lg font-medium"
-                      to="/colors">Colors</Link>
-                <Link className="no-underline text-black text-lg font-medium"
-                      to="/container">Container</Link>
-            </nav>
+            <Nav>
+                <Link to="/colors">
+                    <NavButton>Colors</NavButton>
+                </Link>
+                <Link to="/container">
+                    <NavButton>Container</NavButton>
+                </Link>
+                <Link to="/text">
+                    <NavButton>Text Size</NavButton>
+                </Link>
+            </Nav>
         </Hydrogen>
     )
 }
@@ -31,6 +57,7 @@ function NoMatch(props) {
 const ColorList = lazy(() => import('./pages/ColorList/ColorList.jsx'))
 const Timer = lazy(() => import('./pages/Timer/Timer.jsx'))
 const Container = lazy(() => import('./pages/Container/Container.jsx'))
+const TextSize = lazy(() => import('./pages/TextSize/TextSize.jsx'))
 
 export default function App() {
     return (
@@ -40,6 +67,7 @@ export default function App() {
                     <Route path="/" exact><Launcher /></Route>
                     <Route path="/colors"><ColorList /></Route>
                     <Route path="/container"><Container /></Route>
+                    <Route path="/text"><TextSize /></Route>
                     <Route path="/timer"><Timer /></Route>
                     <Route path="*"><NoMatch /></Route>
                 </Switch>

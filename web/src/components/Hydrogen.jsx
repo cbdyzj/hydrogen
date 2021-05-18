@@ -10,9 +10,9 @@ export default function Hydrogen(props) {
     }
 
     return (
-        <div className="text-center">
+        <div style={{ textAlign: 'center' }}>
             <img onClick={handleClick} src={hydrogen} alt="hydrogen" />
-            {props.children && <div className="text-center text-black">
+            {props.children && <div style={{ textAlign: 'center', color: '#000' }}>
                 {props.children}
             </div>}
         </div>

@@ -60,10 +60,19 @@ const FlexBox = styled.div`
   justify-content: center;
 `
 
+function autoScroll(ev) {
+    const container = document.documentElement
+    if (container.scrollTop) {
+        container.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+        container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' })
+    }
+}
+
 export default function Container(props) {
 
     return (
-        <FlexBox>
+        <FlexBox onDoubleClick={autoScroll}>
             <SM>SM: 640px</SM>
             <MD>MD: 768px</MD>
             <LG>LG: 1024px</LG>
