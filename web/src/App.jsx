@@ -24,6 +24,11 @@ const NavButton = styled.button`
   padding: 0 1.5rem;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.1) 0 1px 3px 0, rgba(0, 0, 0, 0.06) 0 1px 2px 0;
+  
+  &:active {
+    color: #fff;
+    background-color: #000;
+  }
 `
 
 function Launcher(props) {
